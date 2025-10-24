@@ -1,17 +1,66 @@
 /*
-  날짜 : 2025/10/23
+  날짜 : 2025/10/24
   이름 : 천수빈
-  내용 : 1장 Flutter 개발환경 구축
+  내용 : Dart 비동기 처리
+*/
 
-  - Android Studio 설치
-  - Flutter SDK 다운로드 및 압축 해제
-  - Android Studio > plugins > flutter, dart 플러그인 설치
- */
+// Future는 미래에 가져오는 값을 의미하는 객체
+Future<String> fetchData(){
 
-import 'dart:io';
+  // 비동기 작업 정의
+  return Future.delayed(Duration(seconds: 3), (){
+    return 'fetchData!';
+  });
+
+}
 
 void main(){
-  print('Hello World!');
-  print("Hello Dart");
-  print("Dart Version : ${Platform.version}");
+
+  // Future 비동기 작업 수행
+  print('here...1');
+
+  fetchData()
+      .then((data){
+        print('here...2 : $data');
+      })
+      .catchError((err){
+        print('here...3 : $err');
+      })
+      .whenComplete((){
+        print('here...4 비동기 작업 완료');
+      });
+
+  print('here...5');
+
+  // async/await 실행
+  print('async_await...1');
+
+  try {
+    String data = await fetchData();  // 비동기 처리를 대기
+    print('async_await...2 : $data');
+  } catch(e) {
+    print('async_await...3 : $e');
+  } finally {
+    print('async_await...4 비동기 작업 완료');
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
