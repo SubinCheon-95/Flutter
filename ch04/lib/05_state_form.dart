@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('05.Widget Form 실습'),),
+        appBar: AppBar(title: const Text('05.위젯 폼 실습'),),
         body: FormPage(),
       ),
     );
