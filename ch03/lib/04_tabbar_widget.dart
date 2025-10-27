@@ -7,7 +7,6 @@
 import 'package:flutter/material.dart';
 
 void main() {
-
   // runApp(TabBarTest());
   runApp(BottomTabBarTest());
 }
@@ -32,11 +31,11 @@ class TabBarTest extends StatelessWidget {
             ),
           ),
           body: TabBarView(
-              children: [
-                Center(child: Text('홈 화면', style: TextStyle(fontSize: 20),),),
-                Center(child: Text('즐겨찾기 화면', style: TextStyle(fontSize: 20),),),
-                Center(child: Text('프로필 화면', style: TextStyle(fontSize: 20),),),
-              ]
+            children: [
+              Center(child: Text('홈 화면', style: TextStyle(fontSize: 20),),),
+              Center(child: Text('즐겨찾기 화면', style: TextStyle(fontSize: 20),),),
+              Center(child: Text('프로필 화면', style: TextStyle(fontSize: 20),),),
+            ],
           ),
         ),
       ),

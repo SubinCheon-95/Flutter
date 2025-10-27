@@ -7,9 +7,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-
   runApp(MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -35,7 +33,7 @@ class DialogTest extends StatelessWidget {
 
     showDialog(
       context: context,
-      barrierDismissible: false,  // 배경 영역을 터치했을 때 대화상자 닫기. (불가)
+      barrierDismissible: false,  // 배경 영역을 터치했을 때 대화상자 닫기. - 불가
       builder: (BuildContext context){
         return AlertDialog(
           title: const Text('기본 대화상자'),
@@ -57,14 +55,14 @@ class DialogTest extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: const Text('확인 클릭'))
               );
-              },
-              child: const Text('확인')
-            ),
-          ],
-        );
-      }
-    );
-  }
+            },
+            child: const Text('확인')
+          ),
+        ],
+      );
+    }
+  );
+}
 
   // 달력 대화상자
   void _showDateDialog(BuildContext context) async {
@@ -87,29 +85,30 @@ class DialogTest extends StatelessWidget {
   void _showCustomDialog(BuildContext context){
 
     showDialog(
-        context: context,
-        barrierDismissible: false,  // 배경 영역을 터치했을 때 대화상자 닫기. (불가)
-        builder: (BuildContext context){
-          return Dialog(
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Text('사용자 정의 대화상자'),
-                  SizedBox(height: 10),
-                  Text('사용자 정의 대화상자 내용 입니다.'),
-                  SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: (){
-                      Navigator.of(context).pop();
-                    },
-                    child: Text('닫기')
-                  )
-                ],
-              ),
+      context: context,
+      barrierDismissible: false,  // 배경 영역을 터치했을 때 대화상자 닫기. - 불가
+      builder: (BuildContext context){
+
+        return Dialog(
+          child: Container(
+            padding: EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Text('사용자 정의 대화상자'),
+                SizedBox(height: 10),
+                Text('사용자 정의 대화상자 내용 입니다.'),
+                SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: (){
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('닫기')
+                )
+              ],
             ),
-          );
-        }
+          ),
+        );
+      }
     );
   }
 

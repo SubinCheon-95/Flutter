@@ -30,20 +30,17 @@ class ListViewTest1 extends StatelessWidget {
         appBar: AppBar(title: Text('01.ListView 위젯 실습'),),
         body: ListView(
           children: [
-
-            for(int i=1 ; i<=10 ; i++)
+            for(int i=1 ; i<=5 ; i++)
               Container(
                 padding: EdgeInsets.all(10),
                 margin: EdgeInsets.all(10),
-                width: double.infinity,
-                // 가로 100%(전체 폭 차지)
                 height: 100,
                 decoration: BoxDecoration(
-                    color: Colors.blue[100],
-                    border: Border.all(
-                        width: 1,
-                        color: Colors.black
-                    )
+                  color: Colors.blue[100],
+                  border: Border.all(
+                    width: 1,
+                    color: Colors.black
+                  )
                 ),
                 child: Text('${i}번째 항목'),
               ),
@@ -56,7 +53,6 @@ class ListViewTest1 extends StatelessWidget {
               trailing: const Icon(Icons.menu),
             ),
 
-            // ListTile은 리스트 아이템 항목을 구성하는 위젯
             ListTile(
               leading: CircleAvatar(
                 radius: 20,
@@ -68,7 +64,7 @@ class ListViewTest1 extends StatelessWidget {
               onTap: (){
                 print('클릭!');
               },
-            )
+            ),
           ],
         ),
       ),
@@ -94,17 +90,15 @@ class ListViewTest2 extends StatelessWidget {
             return Container(
               padding: EdgeInsets.all(10),
               margin: EdgeInsets.all(10),
-              width: double.infinity,
-              // 가로 100%(전체 폭 차지)
               height: 100,
               decoration: BoxDecoration(
-                  color: Colors.blue[100],
-                  border: Border.all(
-                      width: 1,
-                      color: Colors.black
-                  )
+                color: Colors.blue[100],
+                border: Border.all(
+                  width: 1,
+                  color: Colors.black
+                )
               ),
-              child: Text('${personList[index]}'),
+              child: Text(personList[index]),
             );
           },
         ),

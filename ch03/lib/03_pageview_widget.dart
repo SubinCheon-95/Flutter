@@ -7,10 +7,8 @@
 import 'package:flutter/material.dart';
 
 void main() {
-
   // runApp(PageViewTest1());
   runApp(PageViewTest2());
-
 }
 
 class PageViewTest1 extends StatelessWidget {
@@ -81,44 +79,44 @@ class _PageViewTest2State extends State<PageViewTest2> {
 
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-            title: const Text('03.Stateful PageView 위젯 실습'),
-          ),
-          body: PageView(
-            controller: _pageController,
-            onPageChanged: (index){
+        appBar: AppBar(
+          title: const Text('03.Stateful PageView 위젯 실습'),
+        ),
+        body: PageView(
+          controller: _pageController,
+          onPageChanged: (index){
 
-              // 상태 변경 함수를 호출해서 화면 다시 갱신
-              setState(() {
-                _currentPage = index;
-              });
+            // 상태 변경 함수를 호출해서 화면 다시 갱신
+            setState(() {
+              _currentPage = index;
+            });
 
-              print('_currentPage : $_currentPage');
-            },
-            children: [
-              Container(
-                color: Colors.red,
-                alignment: Alignment.center,
-                child: Text('페이지 1\n현재 인덱스 $_currentPage',
-                  style: TextStyle(fontSize: 30),
-                ),
+            print('_currentPage : $_currentPage');
+          },
+          children: [
+            Container(
+              color: Colors.red,
+              alignment: Alignment.center,
+              child: Text('페이지 1\n현재 인덱스 $_currentPage',
+                style: TextStyle(fontSize: 30),
               ),
-              Container(
-                color: Colors.green,
-                alignment: Alignment.center,
-                child: Text('페이지 2\n현재 인덱스 $_currentPage',
-                  style: TextStyle(fontSize: 30),
-                ),
+            ),
+            Container(
+              color: Colors.green,
+              alignment: Alignment.center,
+              child: Text('페이지 2\n현재 인덱스 $_currentPage',
+                style: TextStyle(fontSize: 30),
               ),
-              Container(
-                color: Colors.blue,
-                alignment: Alignment.center,
-                child: Text('페이지 3\n현재 인덱스 $_currentPage',
-                  style: TextStyle(fontSize: 30),
-                ),
+            ),
+            Container(
+              color: Colors.blue,
+              alignment: Alignment.center,
+              child: Text('페이지 3\n현재 인덱스 $_currentPage',
+                style: TextStyle(fontSize: 30),
               ),
-            ],
-          )
+            ),
+          ],
+        )
       ),
     );
   }
