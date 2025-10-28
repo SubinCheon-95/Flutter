@@ -76,7 +76,6 @@ class SecondScreen extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              // 현재 화면 위젯 스텍 제거, 뒤로가기
               Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const ThirdScreen())
