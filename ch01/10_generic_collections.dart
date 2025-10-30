@@ -85,15 +85,16 @@ void main() {
   var set1 = {1, 2, 3, 4};
   var set2 = {3, 4, 5, 6};
 
-  // 교집합
   Set<int> unionSet = set1.union(set2);
   print('합집합 : $unionSet');
 
   // 교집합
-  Set<int> intersectSet = set1.intersect(set2);
+  Set<int> intersectSet = set1.intersection(set2);
   print('교집합 : $intersectSet');
 
   // 차집합
+  Set<int> differenceSet = set1.difference(set2);
+  print('차집합 : $differenceSet');
 
   ////////////////////////////////
   // Map
@@ -118,20 +119,5 @@ void main() {
   // 모든 키, 값을 리스트 생성
   print('모든 키 목록 : ${user.keys.toList()}');
   print('모든 값 목록 : ${user.values.toList()}');
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
