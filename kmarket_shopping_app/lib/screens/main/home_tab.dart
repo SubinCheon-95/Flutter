@@ -1,16 +1,29 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:kmarket_shopping/providers/auth_provider.dart';
+import 'package:kmarket_shopping/screens/main/my_tab.dart';
 import 'package:kmarket_shopping/screens/member/login_screen.dart';
+import 'package:kmarket_shopping/services/token_storage_service.dart';
+import 'package:provider/provider.dart';
 
 class HomeTab extends StatefulWidget {
-  const HomeTab({super.key});
+
+  final Function(int) onTabSwitch;
+
+  const HomeTab({super.key, required this.onTabSwitch});
+
   @override
   State<StatefulWidget> createState() => _HomeTabState();
 }
 
 class _HomeTabState extends State<HomeTab> {
 
+  final tokenStorageService = TokenStorageService();
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(title: _buildAppBar(context),),
       body: SingleChildScrollView(
@@ -32,17 +45,42 @@ class _HomeTabState extends State<HomeTab> {
 
   // 상단 앱바 디자인 함수
   Widget _buildAppBar(BuildContext context) {
+
+    // AuthProvider 구독
+    final authProvider = Provider.of<AuthProvider>(context);
+    bool isLoggedIn = authProvider.isLoggedIn;
+
+    log('isLoggedIn = $isLoggedIn');
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Image.asset('images/logo.png', width: 140,),
         IconButton(
-          onPressed: (){
-            Navigator.of(context).push(
+          onPressed: () async {
+
+            if(isLoggedIn){
+
+              /*
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => MyTab()),
+              );
+              */
+
+              // 마이페이지 탭 전환
+              widget.onTabSwitch(3);
+
+            }else{
+              await Navigator.of(context).push(
                 MaterialPageRoute(builder: (_) => LoginScreen())
-            );
+              );
+              setState(() {});
+            }
           },
-          icon: Icon(Icons.login, size: 30,),
+          icon: Icon(
+            isLoggedIn ? Icons.person : Icons.login,
+            size: 30,
+          ),
         )
       ],
     );
@@ -80,14 +118,14 @@ class _HomeTabState extends State<HomeTab> {
     return SizedBox(
       height: 200,
       child: PageView.builder(
-          itemCount: bannerImages.length,
-          itemBuilder: (context, index){
-            final pathImage = bannerImages[index];
-            return Container(
-              margin: EdgeInsets.symmetric(horizontal: 6),
-              child: Image.asset(pathImage),
-            );
-          }
+        itemCount: bannerImages.length,
+        itemBuilder: (context, index){
+          final pathImage = bannerImages[index];
+          return Container(
+            margin: EdgeInsets.symmetric(horizontal: 6),
+            child: Image.asset(pathImage),
+          );
+        }
       ),
     );
   }
